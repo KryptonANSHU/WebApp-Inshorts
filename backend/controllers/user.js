@@ -4,7 +4,7 @@ const rug = require("random-username-generator");
 const bcrypt = require("bcrypt")
 const axios = require("axios");
 
-const { user} = require("../models");
+const { user } = require("../models");
 
 
 exports.getUser = async (req, res) => {
@@ -12,7 +12,7 @@ exports.getUser = async (req, res) => {
       console.log(req.params);
       const user_instance = await user.findOne({
         where: {
-          username: req.params.username,
+          id: req.params.id,
         },
       });
       res.status(200).json(
@@ -68,13 +68,14 @@ exports.getUser = async (req, res) => {
     let {  email, password } = req.body;
     const password_hash = await bcrypt.hash(password,10);
     try {
-  
+
       const user_instance = await user.findOne({
         where: {
           email: email,
         },
       });
       if (!user_instance) throw {message: "User does not exist"}
+      console.log(user_instance)
   
       if( !(await bcrypt.compare(password,user_instance.password_hash) ))  throw {message: "Wrong Password"}
   
