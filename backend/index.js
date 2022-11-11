@@ -28,6 +28,11 @@ app.get("/", (req, res) => {
     console.log(req);
     res.send("Hello World");
   });
+
+  // Import Routes
+  const userRouter = require("./routes/user");
+
+  app.use("/user", userRouter);
   
 
 const PORT = process.env.PORT || 5000;

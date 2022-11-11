@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
           isEmail: true,
         }
       },
-      // shipping_id: DataTypes.INTEGER,
+      password_hash: DataTypes.STRING,
       admin: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
@@ -45,6 +45,14 @@ module.exports = (sequelize, DataTypes) => {
       isVerified: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
+      },
+      createdAt:{
+        type:DataTypes.DATE,
+        required: true
+      },
+      updatedAt:{
+        type:DataTypes.DATE,
+        required: true
       },
     },
     {
