@@ -33,7 +33,6 @@ module.exports = (sequelize, DataTypes) => {
           isEmail: true,
         }
       },
-      name: DataTypes.STRING,
       // shipping_id: DataTypes.INTEGER,
       admin: {
         type: DataTypes.BOOLEAN,
